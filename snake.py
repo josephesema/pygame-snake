@@ -30,9 +30,9 @@ DIRECTION_DOWN = (0, 1)
 # Background color of the snake grid.
 COLOR_BACKGROUND = (255, 255, 255)  # rgb color for white
 # This is the color of the snake's head. 
-COLOR_SNAKE_HEAD = (255, 0, 0)      # rgb color for red
+COLOR_SNAKE_HEAD = (69, 139, 204)      # rgb color for red
 # This is the color of the rest of the snake.
-COLOR_SNAKE = (0, 255, 0)           # rgb color for green
+COLOR_SNAKE = (248, 147, 47)           # rgb color for green
 # This is the color for the snake's food.
 COLOR_FOOD = (255, 200, 0)          # rgb color for orange
 # This is the color for the game over text.
@@ -257,4 +257,3 @@ def start_game():
 
 # Start the snake game.
 start_game()
-
