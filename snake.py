@@ -99,15 +99,14 @@ def get_score(snake):
     The user earns 10 points for each of the segments in the snake.
     For example, if the snake has 25 segments, the score is 250.
     """
-    return 0
+    return len(snake) * 10
 
 def get_game_over_text(score):
     """Returns the text to draw on the screen after the game is over.
     This text should contain 'Game Over' as well as the score.
     score - integer representing the current score of the game.
     """
-    return 'Game Over.'
-
+    return 'Game Over. ' + 'Score: ' + str(score)
 def get_snake_speed(snake):
     """Return the number of cells the snake should travel in one second.
     snake - list of 2-tuples representing the positions of each snake segment
