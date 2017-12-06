@@ -28,7 +28,7 @@ DIRECTION_UP = (0, -1)
 DIRECTION_DOWN = (0, 1)
 
 # Background color of the snake grid.
-COLOR_BACKGROUND = (255, 255, 255)  # rgb color for white
+COLOR_BACKGROUND = (255, 0, 255)  # rgb color for white (255, 255, 255)
 # This is the color of the snake's head. 
 COLOR_SNAKE_HEAD = (69, 139, 204)      # rgb color for red
 # This is the color of the rest of the snake.
@@ -45,13 +45,25 @@ def get_direction(previous_direction, event_key):
     If event_key does not correspond with any of the arrows keys, return previous_direction.
     """
     if event_key == pygame.K_LEFT:
-        return DIRECTION_LEFT
-    elif event_key == pygame.K_UP:
-        return DIRECTION_UP
+        if previous_direction != DIRECTION_RIGHT:
+            return DIRECTION_LEFT
     elif event_key == pygame.K_RIGHT:
-        return DIRECTION_RIGHT
-    else:
-        return DIRECTION_DOWN
+        if previous_direction != DIRECTION_LEFT:
+            return DIRECTION_RIGHT
+    elif event_key == pygame.K_UP:
+        if previous_direction != DIRECTION_DOWN:
+            return DIRECTION_UP
+    elif event_key == pygame.K_DOWN:
+        if previous_direction != DIRECTION_UP:
+            return DIRECTION_DOWN
+##    if previous_direction == DIRECTION_LEFT and event_key == pygame.K_RIGHT:
+##        return previous_direction
+##    if previous_direction == DIRECTION_RIGHT and event_key == pygame.K_LEFT:
+##        return previous_direction
+##    if previous_direction == DIRECTION_UP and event_key == pygame.K_DOWN:
+##        return previous_direction
+##    if previous_direction == DIRECTION_DOWN and event_key == pygame.K_UP:
+##        return previous_direction
     return previous_direction
 
 def create_food_position():
@@ -78,7 +90,7 @@ def snake_ran_out_of_bounds(snake):
     snake - list of 2-tuples representing the positions of each snake segment
     Note that the grid is GRID_WIDTH cells wide and GRID_HEIGHT cells high.
     """
-    if snake[0][0] > GRID_WIDTH or snake[0][0] < 0 or snake[0][1] > GRID_HEIGHT or snake[0][1] < 0 :
+    if snake[0][0] >= GRID_WIDTH or snake[0][0] <= 0 or snake[0][1] >= GRID_HEIGHT or snake[0][1] <= 0 :
         return True
     return False
 
